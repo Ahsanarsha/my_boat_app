@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:my_boat/features/authentication/registration/widgets/password_validation.dart';
 import 'package:my_boat/routes/routes_names.dart';
 import 'package:my_boat/themes/colors.dart';
@@ -14,12 +15,8 @@ import 'package:my_boat/widgets/hide_keyboard.dart';
 import 'package:my_boat/widgets/horizontal_space.dart';
 import 'package:my_boat/widgets/input_field.dart';
 import 'package:my_boat/widgets/logo.dart';
-import 'package:my_boat/widgets/primary_checkbox.dart';
 import 'package:my_boat/widgets/sign_up_circular_button.dart';
 import 'package:my_boat/widgets/vertical_space.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -372,6 +369,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   const VerticalSpace(height: 30),
                   AppButton(
+                    isUpperCase: false,
                     radius: 10,
                     backgroundColor: AppColors.c5CE1E6,
 
@@ -394,7 +392,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        AppLocalizations.of(context)!.dontHaveAnAccount,
+                        AppLocalizations.of(context)!.doYouHaveAn,
                         style: regularTextStyle(fontSize: 15),
                       ),
                       Clickable(
@@ -405,7 +403,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             children: [
                               TextSpan(
                                   text:
-                                      ' ${AppLocalizations.of(context)!.signUp} ',
+                                      ' ${AppLocalizations.of(context)!.signIn} ',
                                   style: regularTextStyle(
                                     color: AppColors.c5CE1E6,
                                   )),

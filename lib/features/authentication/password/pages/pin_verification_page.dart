@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:my_boat/routes/routes_names.dart';
 import 'package:my_boat/themes/colors.dart';
 import 'package:my_boat/themes/styles.dart';
@@ -5,15 +6,11 @@ import 'package:my_boat/utils/exports.dart';
 import 'package:my_boat/utils/extensions.dart';
 import 'package:my_boat/utils/helper.dart';
 import 'package:my_boat/utils/params.dart';
-import 'package:my_boat/utils/scalling.dart';
-import 'package:my_boat/widgets/app_bar.dart';
 import 'package:my_boat/widgets/button.dart';
 import 'package:my_boat/widgets/hide_keyboard.dart';
 import 'package:my_boat/widgets/input_field.dart';
 import 'package:my_boat/widgets/logo.dart';
-import 'package:my_boat/widgets/pin_input_field.dart';
 import 'package:my_boat/widgets/vertical_space.dart';
-import 'package:flutter/material.dart';
 
 class PinVerificationPage extends StatefulWidget {
   final PinVerificationPageParams params;
@@ -108,6 +105,7 @@ class _PinVerificationPageState extends State<PinVerificationPage> {
                   const VerticalSpace(height: 30),
 
                   AppButton(
+                    isUpperCase: false,
                     radius: 10,
                     backgroundColor: AppColors.c5CE1E6,
                     title: AppLocalizations.of(context)!.next,
@@ -129,6 +127,7 @@ class _PinVerificationPageState extends State<PinVerificationPage> {
                   const VerticalSpace(height: 20),
 
                   AppButton(
+                    isUpperCase: false,
                     radius: 10,
                     backgroundColor: AppColors.cE8E8E8,
                     title: AppLocalizations.of(context)!.login,
@@ -137,31 +136,6 @@ class _PinVerificationPageState extends State<PinVerificationPage> {
                       pushToAndReplaceName(RoutesNames.login);
                     },
                   ),
-
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: [
-                  //     Form(
-                  //       key: otpFormKey,
-                  //       child: PinInputField(
-                  //         length: 6,
-                  //         controller: otpController,
-                  //         onSuccess: (value) async {
-                  //           if (isFormValidate()) {}
-                  //         },
-                  //         validator: (value) {
-                  //           if (value!.isEmpty) {
-                  //             return AppLocalizations.of(context)!
-                  //                 .required(AppLocalizations.of(context)!.otp);
-                  //           } else if (value.length < 6) {
-                  //             return '${AppLocalizations.of(context)!.otp} ${AppLocalizations.of(context)!.mustBe6CharactersLong}';
-                  //           }
-                  //           return null;
-                  //         },
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),

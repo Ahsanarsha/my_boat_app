@@ -1,10 +1,10 @@
 {
+ 
   "appName": "My Boat",
   "letsGetStarted": "Let’s get started!",
   "emailUsername": "Email/Username",
   "enterEmailOrUsername": "Enter email or username",
 
-  "signIn": "Sign In",
  
   "orSignUpWith": "Or Sign Up With",
   "referralCode": "Referral code",
@@ -194,8 +194,6 @@
   "addToFavorites": "Add to Favorites",
   "suggestTipCorrection": "Suggest Tip/Correction",
   "jobsOffer": "Jobs offer",
-  "fullTime": "Full Time",
-  "partTime": "Part Time",
   "visitWebsite": "Visit Website",
   "overview": "Overview",
   "clear": "Clear",
@@ -452,7 +450,8 @@
   "enterOtpHere": "Enter OTP Here",
   "enterANewPassword": "Enter a New Password",
   "setNewPassword": "Set New Password",
-
+  "doYouHaveAn": "Do you have an account?",
+  "signIn": "Sign In",
 
   "next": "Next",
   "aCodeToResetYour": "A Code to reset your password will be sent to your email"

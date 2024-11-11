@@ -71,10 +71,10 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
-    - assets/fonts/inter/
+    - assets/fonts/sfui/
 
   fonts:
-    - family: Inter
+    - family: sfui
       fonts:
         - asset: assets/fonts/inter/light.otf
           weight: 300

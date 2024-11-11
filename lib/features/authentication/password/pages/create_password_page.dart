@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:my_boat/features/authentication/registration/widgets/password_validation.dart';
 import 'package:my_boat/routes/routes_names.dart';
 import 'package:my_boat/themes/colors.dart';
@@ -6,15 +7,12 @@ import 'package:my_boat/utils/exports.dart';
 import 'package:my_boat/utils/extensions.dart';
 import 'package:my_boat/utils/helper.dart';
 import 'package:my_boat/utils/regexs.dart';
-import 'package:my_boat/utils/scalling.dart';
-import 'package:my_boat/widgets/app_bar.dart';
 import 'package:my_boat/widgets/button.dart';
 import 'package:my_boat/widgets/hide_keyboard.dart';
 import 'package:my_boat/widgets/horizontal_space.dart';
 import 'package:my_boat/widgets/input_field.dart';
 import 'package:my_boat/widgets/logo.dart';
 import 'package:my_boat/widgets/vertical_space.dart';
-import 'package:flutter/material.dart';
 
 class CreatePasswordPage extends StatefulWidget {
   const CreatePasswordPage({super.key});
@@ -207,6 +205,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                   const VerticalSpace(height: 30),
 
                   AppButton(
+                    isUpperCase: false,
                     radius: 10,
                     backgroundColor: AppColors.c5CE1E6,
                     title: AppLocalizations.of(context)!.setNewPassword,

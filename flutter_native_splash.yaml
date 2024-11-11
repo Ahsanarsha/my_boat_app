@@ -1,8 +1,8 @@
 flutter_native_splash:
-  image: assets/icons/empty-white.png
-  color: "#ffffff"
+  image: assets/images/splash_screen.png  # Path to your splash screen image
+  color: "#ffffff"  # Background color for splash screen
   fullscreen: false
   android_12:
-    image: assets/icons/empty-white.png
+    image: assets/images/splash_screen.png  # Path for Android 12+
     color: "#ffffff"
     icon_background_color: "#ffffff"
