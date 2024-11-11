@@ -9,6 +9,7 @@ import 'package:my_boat/widgets/app_bar.dart';
 import 'package:my_boat/widgets/button.dart';
 import 'package:my_boat/widgets/hide_keyboard.dart';
 import 'package:my_boat/widgets/input_field.dart';
+import 'package:my_boat/widgets/logo.dart';
 import 'package:my_boat/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
 
@@ -46,91 +47,99 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return HideKeyboardOnOutsideTap(
       child: Scaffold(
-        appBar:
-            CustomAppBar(title: AppLocalizations.of(context)!.forgotPassword),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const VerticalSpace(height: 24),
-              Text(
-                AppLocalizations.of(context)!.enterRegisteredEmail,
-                style: semiBoldTextStyle(fontSize: 20),
-              ),
-              Text(
-                AppLocalizations.of(context)!.youWillReceiveA6Digit,
-                style: mediumTextStyle(
-                  color: AppColors.c181B23,
-                  fontSize: 12,
-                ),
-              ),
-
-              ///Email Field
-              ...[
-                const VerticalSpace(height: 24),
-                Row(
-                  children: [
-                    Text(
-                      '${AppLocalizations.of(context)!.email}*',
-                      style: regularTextStyle(fontSize: 14),
-                    ),
-                  ],
-                ),
-                const VerticalSpace(height: 4),
-                Form(
-                  key: emailFormKey,
-                  child: AppInputField(
-                    controller: emailController,
-                    focusNode: emailFocus,
-                    name: AppLocalizations.of(context)!.email,
-                    hint: AppLocalizations.of(context)!.enterEmail,
-                    textInputType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.done,
-                    onChanged: (value) {
-                      emailFormKey.currentState!.validate();
-                    },
-                    onFieldSubmitted: (value) {
-                      emailFormKey.currentState!.validate();
-                    },
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const VerticalSpace(height: 32),
+                  const LogoClass(),
+                  const VerticalSpace(height: 60),
+                  Text(
+                    AppLocalizations.of(context)!.forgotPassword,
+                    style: boldTextStyle(fontSize: 20),
                   ),
-                ),
-              ],
-            ],
-          ),
-        ),
-        bottomNavigationBar: SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppButton(
-                margin: EdgeInsets.symmetric(horizontal: 20.w),
-                title: AppLocalizations.of(context)!.next,
-                showLoader: loading,
-                onTap: () async {
-                  if (isFormValidate()) {
-                    loading = true;
-                    setState(() {});
-                    await Future.delayed(
-                        const Duration(milliseconds: 500), () {});
-                    loading = false;
-                    setState(() {});
+                  const VerticalSpace(height: 5),
 
-                    pushToName(
-                      RoutesNames.pinVerification,
-                      arguments: PinVerificationPageParams(
-                        email: emailController.text,
-                        onSuccess: () {
-                          pushToAndReplaceName(RoutesNames.createPassword);
+                  Text(
+                    AppLocalizations.of(context)!.aCodeToResetYour,
+                    style: mediumTextStyle(fontSize: 12),
+                  ),
+
+                  ///Email Field
+                  ...[
+                    const VerticalSpace(height: 20),
+                    Row(
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.email,
+                          style: regularTextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                    const VerticalSpace(height: 4),
+                    Form(
+                      key: emailFormKey,
+                      child: AppInputField(
+                        controller: emailController,
+                        focusNode: emailFocus,
+                        name: AppLocalizations.of(context)!.email,
+                        hint: AppLocalizations.of(context)!.enterEmailHere,
+                        textInputType: TextInputType.emailAddress,
+                        textInputAction: TextInputAction.done,
+                        onChanged: (value) {
+                          emailFormKey.currentState!.validate();
+                        },
+                        onFieldSubmitted: (value) {
+                          emailFormKey.currentState!.validate();
                         },
                       ),
-                    );
-                  }
-                },
+                    ),
+                  ],
+                  const VerticalSpace(height: 30),
+
+                  AppButton(
+                    radius: 10,
+                    backgroundColor: AppColors.c5CE1E6,
+                    title: AppLocalizations.of(context)!.next,
+                    showLoader: loading,
+                    onTap: () async {
+                      if (isFormValidate()) {
+                        loading = true;
+                        setState(() {});
+                        await Future.delayed(
+                            const Duration(milliseconds: 500), () {});
+                        loading = false;
+                        setState(() {});
+
+                        pushToName(
+                          RoutesNames.pinVerification,
+                          arguments: PinVerificationPageParams(
+                            email: emailController.text,
+                            onSuccess: () {
+                              pushToAndReplaceName(RoutesNames.createPassword);
+                            },
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                  const VerticalSpace(height: 20),
+
+                  AppButton(
+                    radius: 10,
+                    backgroundColor: AppColors.cE8E8E8,
+                    title: AppLocalizations.of(context)!.login,
+                    textStyle: regularTextStyle(color: AppColors.black),
+                    onTap: () async {
+                      pushToAndReplaceName(RoutesNames.login);
+                    },
+                  ),
+                ],
               ),
-              if (!(MediaQuery.of(context).padding.bottom > 0))
-                SizedBox(height: 20.h),
-            ],
+            ),
           ),
         ),
       ),

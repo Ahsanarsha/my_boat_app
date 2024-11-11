@@ -204,7 +204,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                       controller: usernameController,
                       focusNode: usernameFocus,
                       name: AppLocalizations.of(context)!.username,
-                      hint: AppLocalizations.of(context)!.enterUsername,
+                      hint: AppLocalizations.of(context)!.enterFullName,
                       textInputType: TextInputType.name,
                       onChanged: (value) {
                         usernameFormKey.currentState!.validate();

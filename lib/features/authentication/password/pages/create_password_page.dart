@@ -12,6 +12,7 @@ import 'package:my_boat/widgets/button.dart';
 import 'package:my_boat/widgets/hide_keyboard.dart';
 import 'package:my_boat/widgets/horizontal_space.dart';
 import 'package:my_boat/widgets/input_field.dart';
+import 'package:my_boat/widgets/logo.dart';
 import 'package:my_boat/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
 
@@ -58,28 +59,36 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
   Widget build(BuildContext context) {
     return HideKeyboardOnOutsideTap(
       child: Scaffold(
-        appBar:
-            CustomAppBar(title: AppLocalizations.of(context)!.forgotPassword),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const VerticalSpace(height: 24),
+                  const VerticalSpace(height: 32),
+                  const LogoClass(),
+                  const VerticalSpace(height: 60),
                   Text(
-                    AppLocalizations.of(context)!.enterRegisteredEmail,
-                    style: semiBoldTextStyle(fontSize: 20),
+                    AppLocalizations.of(context)!.setNewPassword,
+                    style: boldTextStyle(fontSize: 20),
                   ),
+                  const VerticalSpace(height: 8),
+                  Text(
+                    AppLocalizations.of(context)!.enterANewPassword,
+                    style: mediumTextStyle(
+                      color: AppColors.c181B23,
+                      fontSize: 12,
+                    ),
+                  ),
+                  const VerticalSpace(height: 20),
 
                   ///Password Field
                   ...[
-                    const VerticalSpace(height: 24),
                     Row(
                       children: [
                         Text(
-                          '${AppLocalizations.of(context)!.newPassword}*',
+                          AppLocalizations.of(context)!.password,
                           style: regularTextStyle(fontSize: 14),
                         ),
                       ],
@@ -90,8 +99,8 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                       child: AppInputField(
                         controller: passwordController,
                         focusNode: passwordFocus,
-                        name: AppLocalizations.of(context)!.newPassword,
-                        hint: AppLocalizations.of(context)!.enterNewPassword,
+                        name: AppLocalizations.of(context)!.password,
+                        hint: AppLocalizations.of(context)!.enterPasswordHere,
                         textInputType: TextInputType.visiblePassword,
                         isLoginPassword: true,
                         onChanged: (value) {
@@ -159,11 +168,11 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
 
                   ///Confirm Password Field
                   ...[
-                    const VerticalSpace(height: 24),
+                    const VerticalSpace(height: 30),
                     Row(
                       children: [
                         Text(
-                          '${AppLocalizations.of(context)!.confirmPassword}*',
+                          AppLocalizations.of(context)!.confirmPassword,
                           style: regularTextStyle(fontSize: 14),
                         ),
                       ],
@@ -175,8 +184,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                         controller: confirmController,
                         focusNode: confirmFocus,
                         name: AppLocalizations.of(context)!.confirmPassword,
-                        hint:
-                            AppLocalizations.of(context)!.enterConfirmPassword,
+                        hint: AppLocalizations.of(context)!.enterPasswordHere,
                         textInputType: TextInputType.visiblePassword,
                         isLoginPassword: true,
                         textInputAction: TextInputAction.done,
@@ -196,36 +204,30 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                       ),
                     ),
                   ],
+                  const VerticalSpace(height: 30),
+
+                  AppButton(
+                    radius: 10,
+                    backgroundColor: AppColors.c5CE1E6,
+                    title: AppLocalizations.of(context)!.setNewPassword,
+                    showLoader: loading,
+                    onTap: () async {
+                      if (isFormValidate()) {
+                        var appLoc = AppLocalizations.of(context);
+                        loading = true;
+                        setState(() {});
+                        await Future.delayed(
+                            const Duration(milliseconds: 500), () {});
+                        loading = false;
+                        setState(() {});
+                        appLoc!.passwordHasBeenChangeedSuccessfully.showToast();
+                        popUntil(RoutesNames.login);
+                      }
+                    },
+                  ),
                 ],
               ),
             ),
-          ),
-        ),
-        bottomNavigationBar: SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppButton(
-                margin: EdgeInsets.symmetric(horizontal: 24.w),
-                title: AppLocalizations.of(context)!.save,
-                showLoader: loading,
-                onTap: () async {
-                  if (isFormValidate()) {
-                    var appLoc = AppLocalizations.of(context);
-                    loading = true;
-                    setState(() {});
-                    await Future.delayed(
-                        const Duration(milliseconds: 500), () {});
-                    loading = false;
-                    setState(() {});
-                    appLoc!.passwordHasBeenChangeedSuccessfully.showToast();
-                    popUntil(RoutesNames.login);
-                  }
-                },
-              ),
-              if (!(MediaQuery.of(context).padding.bottom > 0))
-                SizedBox(height: 20.h),
-            ],
           ),
         ),
       ),

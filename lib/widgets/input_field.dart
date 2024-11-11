@@ -120,43 +120,43 @@ class _AppInputFieldState extends State<AppInputField> {
         enabledBorder: OutlineInputBorder(
           borderRadius: radius,
           borderSide: BorderSide(
-            color: widget.borderColor ?? AppColors.cEEE4DF,
-            width: 1.5,
+            color: widget.borderColor ?? AppColors.cA3A3A3,
+            width: 1,
           ),
         ),
         border: OutlineInputBorder(
           borderRadius: radius,
           borderSide: BorderSide(
-            color: widget.borderColor ?? AppColors.cEEE4DF,
-            width: 1.5,
+            color: widget.borderColor ?? AppColors.cA3A3A3,
+            width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: radius,
           borderSide: BorderSide(
-            width: 1.5,
+            width: 1,
             color: widget.borderColor ?? AppColors.primary,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: radius,
           borderSide: BorderSide(
-            width: 1.5,
+            width: 1,
             color: widget.borderColor ?? AppColors.error,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: radius,
           borderSide: BorderSide(
-            width: 1.5,
+            width: 1,
             color: widget.borderColor ?? AppColors.error,
           ),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: radius,
           borderSide: BorderSide(
-            width: 1.5,
-            color: widget.borderColor ?? AppColors.cEEE4DF,
+            width: 1,
+            color: widget.borderColor ?? AppColors.cA3A3A3,
           ),
         ),
         isDense: true,
@@ -170,7 +170,7 @@ class _AppInputFieldState extends State<AppInputField> {
                     },
                     child: Image.asset(
                       isSecure ? AssetIcons.secure : AssetIcons.unsecure,
-                      scale: isSecure ? 5 : 4,
+                      scale: isSecure ? 30 : 35,
                       color: AppColors.c6D7A98,
                     ),
                   )

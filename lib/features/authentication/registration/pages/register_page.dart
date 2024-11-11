@@ -9,9 +9,11 @@ import 'package:my_boat/utils/helper.dart';
 import 'package:my_boat/utils/regexs.dart';
 import 'package:my_boat/utils/scalling.dart';
 import 'package:my_boat/widgets/button.dart';
+import 'package:my_boat/widgets/clickable.dart';
 import 'package:my_boat/widgets/hide_keyboard.dart';
 import 'package:my_boat/widgets/horizontal_space.dart';
 import 'package:my_boat/widgets/input_field.dart';
+import 'package:my_boat/widgets/logo.dart';
 import 'package:my_boat/widgets/primary_checkbox.dart';
 import 'package:my_boat/widgets/sign_up_circular_button.dart';
 import 'package:my_boat/widgets/vertical_space.dart';
@@ -27,21 +29,24 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  late final GlobalKey<FormState> referralCodeFormKey;
-  late final GlobalKey<FormState> userNameFormKey;
+  late final GlobalKey<FormState> fullNameFormKey;
   late final GlobalKey<FormState> emailFormKey;
+  late final GlobalKey<FormState> phoneFormKey;
+  late final GlobalKey<FormState> countryFormKey;
   late final GlobalKey<FormState> passwordFormKey;
   late final GlobalKey<FormState> confirmPasswordFormKey;
 
-  late final FocusNode referralCodeFocus;
-  late final FocusNode userNameFocus;
+  late final FocusNode fullNameFocus;
   late final FocusNode emailFocus;
+  late final FocusNode phoneFocus;
+  late final FocusNode countryFocus;
   late final FocusNode passwordFocus;
   late final FocusNode confirmPasswordFocus;
 
-  late final TextEditingController referralCodeController;
-  late final TextEditingController userNameController;
+  late final TextEditingController fullNameController;
   late final TextEditingController emailController;
+  late final TextEditingController phoneController;
+  late final TextEditingController countryController;
   late final TextEditingController passwordController;
   late final TextEditingController confirmPasswordController;
 
@@ -51,22 +56,26 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void initState() {
-    referralCodeFormKey = GlobalKey<FormState>();
-    userNameFormKey = GlobalKey<FormState>();
+    fullNameFormKey = GlobalKey<FormState>();
     emailFormKey = GlobalKey<FormState>();
     passwordFormKey = GlobalKey<FormState>();
+    phoneFormKey = GlobalKey<FormState>();
+    countryFormKey = GlobalKey<FormState>();
     confirmPasswordFormKey = GlobalKey<FormState>();
 
-    referralCodeController = TextEditingController();
-    userNameController = TextEditingController();
+    fullNameController = TextEditingController();
     emailController = TextEditingController();
+    phoneController = TextEditingController();
+    countryController = TextEditingController();
     passwordController = TextEditingController();
     confirmPasswordController = TextEditingController();
 
-    referralCodeFocus = FocusNode();
-    userNameFocus = FocusNode();
+    fullNameFocus = FocusNode();
     emailFocus = FocusNode();
+    phoneFocus = FocusNode();
+    countryFocus = FocusNode();
     passwordFocus = FocusNode();
+
     confirmPasswordFocus = FocusNode();
 
     super.initState();
@@ -74,15 +83,17 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void dispose() {
-    referralCodeController.dispose();
-    userNameController.dispose();
+    fullNameController.dispose();
     emailController.dispose();
+    phoneController.dispose();
+    countryController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
 
-    referralCodeFocus.dispose();
-    userNameFocus.dispose();
+    fullNameFocus.dispose();
     emailFocus.dispose();
+    phoneFocus.dispose();
+    countryFocus.dispose();
     passwordFocus.dispose();
     confirmPasswordFocus.dispose();
 
@@ -98,64 +109,46 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const VerticalSpace(height: 35.66),
+                  const VerticalSpace(height: 32),
+                  const LogoClass(),
+                  const VerticalSpace(height: 20),
                   Text(
-                    AppLocalizations.of(context)!.letsGetStarted,
-                    style: boldTextStyle(fontSize: 26),
+                    AppLocalizations.of(context)!.signUp,
+                    style: boldTextStyle(fontSize: 20),
                   ),
-                  const VerticalSpace(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.signIn.toUpperCase(),
-                        style: mediumTextStyle(fontSize: 13),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.w),
-                        child: CupertinoSwitch(
-                          value: true,
-                          activeColor: AppColors.primary,
-                          onChanged: (value) =>
-                              pushToAndReplaceName(RoutesNames.login),
-                        ),
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.signUp.toUpperCase(),
-                        style: mediumTextStyle(
-                          fontSize: 13,
-                          color: AppColors.c636C73,
-                        ),
-                      ),
-                    ],
+                  const VerticalSpace(height: 5),
+                  Text(
+                    AppLocalizations.of(context)!.welcomeBackSelect,
+                    style: mediumTextStyle(fontSize: 12),
                   ),
 
-                  /// Referral Code Field...
+                  ///UserName Field...
                   ...[
-                    const VerticalSpace(height: 32),
+                    const VerticalSpace(height: 16),
                     Row(
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.referralCode,
+                          AppLocalizations.of(context)!.fullName,
                           style: regularTextStyle(fontSize: 14),
                         ),
                       ],
                     ),
                     const VerticalSpace(height: 4),
                     Form(
-                      key: referralCodeFormKey,
+                      key: fullNameFormKey,
                       child: AppInputField(
-                        controller: referralCodeController,
-                        focusNode: referralCodeFocus,
-                        name: AppLocalizations.of(context)!.referralCode,
-                        hint: AppLocalizations.of(context)!.enterReferralCode,
-                        textInputType: TextInputType.number,
+                        controller: fullNameController,
+                        focusNode: fullNameFocus,
+                        name: AppLocalizations.of(context)!.fullName,
+                        hint: AppLocalizations.of(context)!.enterFullName,
+                        textInputType: TextInputType.name,
                         onChanged: (value) {
-                          referralCodeFormKey.currentState!.validate();
+                          fullNameFormKey.currentState!.validate();
                         },
                         onFieldSubmitted: (value) {
-                          referralCodeFormKey.currentState!.validate();
+                          fullNameFormKey.currentState!.validate();
                         },
                       ),
                     ),
@@ -163,11 +156,11 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   ///Email Field...
                   ...[
-                    const VerticalSpace(height: 16),
+                    const VerticalSpace(height: 30),
                     Row(
                       children: [
                         Text(
-                          '${AppLocalizations.of(context)!.email}*',
+                          AppLocalizations.of(context)!.email,
                           style: regularTextStyle(fontSize: 14),
                         ),
                       ],
@@ -179,7 +172,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: emailController,
                         focusNode: emailFocus,
                         name: AppLocalizations.of(context)!.email,
-                        hint: AppLocalizations.of(context)!.enterEmailAddress,
+                        hint: AppLocalizations.of(context)!.enterEmailHere,
                         textInputType: TextInputType.emailAddress,
                         onChanged: (value) {
                           emailFormKey.currentState!.validate();
@@ -191,31 +184,63 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
 
-                  ///UserName Field...
+                  ///Phone Field...
                   ...[
-                    const VerticalSpace(height: 16),
+                    const VerticalSpace(height: 30),
                     Row(
                       children: [
                         Text(
-                          '${AppLocalizations.of(context)!.username}*',
+                          AppLocalizations.of(context)!.phone,
                           style: regularTextStyle(fontSize: 14),
                         ),
                       ],
                     ),
                     const VerticalSpace(height: 4),
                     Form(
-                      key: userNameFormKey,
+                      key: phoneFormKey,
                       child: AppInputField(
-                        controller: userNameController,
-                        focusNode: userNameFocus,
-                        name: AppLocalizations.of(context)!.username,
-                        hint: AppLocalizations.of(context)!.enterUsername,
-                        textInputType: TextInputType.name,
+                        controller: phoneController,
+                        focusNode: phoneFocus,
+                        name: AppLocalizations.of(context)!.phone,
+                        hint: AppLocalizations.of(context)!.enterPhone,
+                        textInputType: TextInputType.phone,
                         onChanged: (value) {
-                          userNameFormKey.currentState!.validate();
+                          phoneFormKey.currentState!.validate();
                         },
                         onFieldSubmitted: (value) {
-                          userNameFormKey.currentState!.validate();
+                          phoneFormKey.currentState!.validate();
+                        },
+                      ),
+                    ),
+                  ],
+
+                  ///Country Field...
+                  ...[
+                    const VerticalSpace(height: 30),
+                    Row(
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.country,
+                          style: regularTextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                    const VerticalSpace(height: 4),
+                    Form(
+                      key: countryFormKey,
+                      child: AppInputField(
+                        suffixIcon:
+                            const Icon(Icons.keyboard_arrow_down, size: 25),
+                        controller: countryController,
+                        focusNode: countryFocus,
+                        name: AppLocalizations.of(context)!.country,
+                        hint: AppLocalizations.of(context)!.selectCounterHere,
+                        textInputType: TextInputType.phone,
+                        onChanged: (value) {
+                          countryFormKey.currentState!.validate();
+                        },
+                        onFieldSubmitted: (value) {
+                          countryFormKey.currentState!.validate();
                         },
                       ),
                     ),
@@ -223,11 +248,11 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   ///Password Field
                   ...[
-                    const VerticalSpace(height: 16),
+                    const VerticalSpace(height: 30),
                     Row(
                       children: [
                         Text(
-                          '${AppLocalizations.of(context)!.password}*',
+                          AppLocalizations.of(context)!.password,
                           style: regularTextStyle(fontSize: 14),
                         ),
                       ],
@@ -239,7 +264,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: passwordController,
                         focusNode: passwordFocus,
                         name: AppLocalizations.of(context)!.password,
-                        hint: AppLocalizations.of(context)!.enterPassword,
+                        hint: AppLocalizations.of(context)!.enterPasswordHere,
                         textInputType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.next,
                         isLoginPassword: true,
@@ -308,11 +333,11 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   ///Confirm Password Field
                   ...[
-                    const VerticalSpace(height: 16),
+                    const VerticalSpace(height: 30),
                     Row(
                       children: [
                         Text(
-                          '${AppLocalizations.of(context)!.confirmPassword}*',
+                          AppLocalizations.of(context)!.confirmPassword,
                           style: regularTextStyle(fontSize: 14),
                         ),
                       ],
@@ -324,8 +349,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: confirmPasswordController,
                         focusNode: confirmPasswordFocus,
                         name: AppLocalizations.of(context)!.confirmPassword,
-                        hint:
-                            AppLocalizations.of(context)!.enterConfirmPassword,
+                        hint: AppLocalizations.of(context)!.enterPasswordHere,
                         textInputType: TextInputType.visiblePassword,
                         isLoginPassword: true,
                         textInputAction: TextInputAction.done,
@@ -346,49 +370,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
 
-                  const VerticalSpace(height: 24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: PrimaryCheckBox(
-                          value: isTosAccepted,
-                          onTap: () => {
-                            setState(() {
-                              isTosAccepted = !isTosAccepted;
-                            })
-                          },
-                          labelWidget: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              RichText(
-                                text: TextSpan(
-                                  style: regularTextStyle(fontSize: 12),
-                                  children: [
-                                    TextSpan(
-                                        text:
-                                            '${AppLocalizations.of(context)!.iAgreeToThe} '),
-                                    TextSpan(
-                                      text: AppLocalizations.of(context)!
-                                          .termsConditions,
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {},
-                                      style: const TextStyle(
-                                          color: AppColors.primary,
-                                          decoration: TextDecoration.underline),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const VerticalSpace(height: 24),
+                  const VerticalSpace(height: 30),
                   AppButton(
-                    margin: EdgeInsets.symmetric(horizontal: 20.w),
+                    radius: 10,
+                    backgroundColor: AppColors.c5CE1E6,
+
                     title: AppLocalizations.of(context)!.signUp,
                     // enable: isTosAccepted,
                     showLoader: loading,
@@ -403,47 +389,84 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                     },
                   ),
-                  const VerticalSpace(height: 24),
-                  Row(
-                    children: [
-                      const Expanded(
-                        child: Divider(
-                          color: AppColors.cD6D6D6,
-                          thickness: 1,
-                        ),
-                      ),
-                      Container(
-                        height: 27.h,
-                        padding: EdgeInsets.symmetric(horizontal: 6.w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(22),
-                          border: Border.all(color: AppColors.cD6D6D6),
-                        ),
-                        child: Text(
-                          AppLocalizations.of(context)!.orSignUpWith,
-                          style: mediumTextStyle(fontSize: 12),
-                        ),
-                      ),
-                      const Expanded(
-                        child: Divider(
-                          color: AppColors.cD6D6D6,
-                          thickness: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const VerticalSpace(height: 24),
+                  const VerticalSpace(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SignUpCircularButton(
-                          assetPath: AssetIcons.google, onTap: () {}),
-                      const HorizontalSpace(width: 8),
-                      SignUpCircularButton(
-                          assetPath: AssetIcons.facebook, onTap: () {}),
+                      Text(
+                        AppLocalizations.of(context)!.dontHaveAnAccount,
+                        style: regularTextStyle(fontSize: 15),
+                      ),
+                      Clickable(
+                        onTap: () => pushToName(RoutesNames.login),
+                        child: RichText(
+                          text: TextSpan(
+                            style: regularTextStyle(fontSize: 15),
+                            children: [
+                              TextSpan(
+                                  text:
+                                      ' ${AppLocalizations.of(context)!.signUp} ',
+                                  style: regularTextStyle(
+                                    color: AppColors.c5CE1E6,
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
-                  const VerticalSpace(height: 12),
+                  const VerticalSpace(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 111,
+                          width: 192,
+                          decoration: BoxDecoration(
+                              color: AppColors.cF8F8F8,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SignUpCircularButton(
+                                  assetPath: AssetIcons.google, onTap: () {}),
+                              const VerticalSpace(height: 10),
+                              Text(
+                                AppLocalizations.of(context)!
+                                    .continueWithGoogle,
+                                style: regularTextStyle(fontSize: 13),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const HorizontalSpace(width: 20),
+                      Expanded(
+                        child: Container(
+                          height: 111,
+                          width: 192,
+                          decoration: BoxDecoration(
+                              color: AppColors.cF8F8F8,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SignUpCircularButton(
+                                  assetPath: AssetIcons.facebook, onTap: () {}),
+                              const VerticalSpace(height: 10),
+                              Text(
+                                AppLocalizations.of(context)!
+                                    .continueWithFacebook,
+                                style: regularTextStyle(fontSize: 13),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const VerticalSpace(height: 20),
                 ],
               ),
             ),
@@ -456,16 +479,12 @@ class _RegisterPageState extends State<RegisterPage> {
   bool isFormValidate() {
     bool isValidate = true;
     bool isNotAgreeTOC = !isTosAccepted &&
-        referralCodeFormKey.currentState!.validate() &&
-        userNameFormKey.currentState!.validate() &&
+        fullNameFormKey.currentState!.validate() &&
         emailFormKey.currentState!.validate() &&
         passwordFormKey.currentState!.validate() &&
         confirmPasswordFormKey.currentState!.validate();
 
-    if (!referralCodeFormKey.currentState!.validate()) {
-      isValidate = false;
-    }
-    if (!userNameFormKey.currentState!.validate()) {
+    if (!fullNameFormKey.currentState!.validate()) {
       isValidate = false;
     }
     if (!emailFormKey.currentState!.validate()) {

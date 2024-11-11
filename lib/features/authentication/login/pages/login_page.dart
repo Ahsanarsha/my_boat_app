@@ -11,9 +11,10 @@ import 'package:my_boat/widgets/clickable.dart';
 import 'package:my_boat/widgets/hide_keyboard.dart';
 import 'package:my_boat/widgets/horizontal_space.dart';
 import 'package:my_boat/widgets/input_field.dart';
+import 'package:my_boat/widgets/logo.dart';
+import 'package:my_boat/widgets/primary_checkbox.dart';
 import 'package:my_boat/widgets/sign_up_circular_button.dart';
 import 'package:my_boat/widgets/vertical_space.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -32,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   late final TextEditingController passwordController;
 
   bool loading = false;
+  bool isTosAccepted = false;
 
   @override
   void initState() {
@@ -61,132 +63,126 @@ class _LoginPageState extends State<LoginPage> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const VerticalSpace(height: 35.66),
+                  const VerticalSpace(height: 65),
+                  const LogoClass(),
+                  const VerticalSpace(height: 65),
                   Text(
-                    AppLocalizations.of(context)!.letsGetStarted,
-                    style: boldTextStyle(fontSize: 26),
+                    AppLocalizations.of(context)!.forgotPassword,
+                    style: boldTextStyle(fontSize: 20),
                   ),
-                  const VerticalSpace(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.signIn.toUpperCase(),
-                        style: mediumTextStyle(fontSize: 13),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.w),
-                        child: CupertinoSwitch(
-                          value: false,
-                          activeColor: AppColors.primary,
-                          onChanged: (value) =>
-                              pushToAndReplaceName(RoutesNames.register),
-                        ),
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.signUp.toUpperCase(),
-                        style: mediumTextStyle(
-                          fontSize: 13,
-                          color: AppColors.c636C73,
-                        ),
-                      ),
-                    ],
+                  const VerticalSpace(height: 5),
+
+                  Text(
+                    AppLocalizations.of(context)!.welcomeBackSelect,
+                    style: mediumTextStyle(fontSize: 12),
                   ),
 
                   ///Email Field
-                  ...[
-                    const VerticalSpace(height: 32),
-                    Row(
-                      children: [
-                        Text(
-                          '${AppLocalizations.of(context)!.emailUsername}*',
-                          style: regularTextStyle(fontSize: 14),
-                        ),
-                      ],
-                    ),
-                    const VerticalSpace(height: 4),
-                    Form(
-                      key: emailFormKey,
-                      child: AppInputField(
-                        controller: emailController,
-                        focusNode: emailFocus,
-                        name: AppLocalizations.of(context)!.emailUsername,
-                        hint:
-                            AppLocalizations.of(context)!.enterEmailOrUsername,
-                        textInputType: TextInputType.emailAddress,
-                        onChanged: (value) {
-                          emailFormKey.currentState!.validate();
-                        },
-                        onFieldSubmitted: (value) {
-                          emailFormKey.currentState!.validate();
-                        },
-                      ),
-                    ),
-                  ],
 
-                  ///Password Field
-                  ...[
-                    const VerticalSpace(height: 16),
-                    Row(
-                      children: [
-                        Text(
-                          '${AppLocalizations.of(context)!.confirmPassword}*',
-                          style: regularTextStyle(fontSize: 14),
-                        ),
-                      ],
-                    ),
-                    const VerticalSpace(height: 4),
-                    Form(
-                      key: passwordFormKey,
-                      child: AppInputField(
-                        controller: passwordController,
-                        focusNode: passwordFocus,
-                        isLoginPassword: true,
-                        name: AppLocalizations.of(context)!.confirmPassword,
-                        hint:
-                            AppLocalizations.of(context)!.enterConfirmPassword,
-                        textInputType: TextInputType.visiblePassword,
-                        textInputAction: TextInputAction.done,
-                        onChanged: (value) {
-                          passwordFormKey.currentState!.validate();
-                        },
-                        onFieldSubmitted: (value) {
-                          passwordFormKey.currentState!.validate();
-                        },
-                        validator: (value) {
-                          if (value.isNotEmpty && value.length < 8) {
-                            return AppLocalizations.of(context)!
-                                .passwordShouldbeMinimum;
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                  ],
-                  const VerticalSpace(height: 16),
+                  const VerticalSpace(height: 40),
                   Row(
                     children: [
+                      Text(
+                        AppLocalizations.of(context)!.email,
+                        style: regularTextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  const VerticalSpace(height: 4),
+                  Form(
+                    key: emailFormKey,
+                    child: AppInputField(
+                      controller: emailController,
+                      focusNode: emailFocus,
+                      name: AppLocalizations.of(context)!.email,
+                      hint: AppLocalizations.of(context)!.enterEmailHere,
+                      textInputType: TextInputType.emailAddress,
+                      onChanged: (value) {
+                        emailFormKey.currentState!.validate();
+                      },
+                      onFieldSubmitted: (value) {
+                        emailFormKey.currentState!.validate();
+                      },
+                    ),
+                  ),
+
+                  ///Password Field
+
+                  const VerticalSpace(height: 30),
+                  Row(
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.password,
+                        style: regularTextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  const VerticalSpace(height: 4),
+                  Form(
+                    key: passwordFormKey,
+                    child: AppInputField(
+                      controller: passwordController,
+                      focusNode: passwordFocus,
+                      isLoginPassword: true,
+                      name: AppLocalizations.of(context)!.password,
+                      hint: AppLocalizations.of(context)!.enterPasswordHere,
+                      textInputType: TextInputType.visiblePassword,
+                      textInputAction: TextInputAction.done,
+                      onChanged: (value) {
+                        passwordFormKey.currentState!.validate();
+                      },
+                      onFieldSubmitted: (value) {
+                        passwordFormKey.currentState!.validate();
+                      },
+                      validator: (value) {
+                        if (value.isNotEmpty && value.length < 8) {
+                          return AppLocalizations.of(context)!
+                              .passwordShouldbeMinimum;
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+
+                  const VerticalSpace(height: 6),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      PrimaryCheckBox(
+                        value: isTosAccepted,
+                        onTap: () => {
+                          setState(() {
+                            isTosAccepted = !isTosAccepted;
+                          })
+                        },
+                        labelWidget: Text(
+                          AppLocalizations.of(context)!.rememberMe,
+                          style: regularTextStyle(
+                              fontSize: 15, color: AppColors.c636C73),
+                        ),
+                      ),
                       Clickable(
                         onTap: () => pushToName(RoutesNames.forgotPassword),
                         child: SizedBox(
-                          height: 50.h,
                           child: Text(
                             '${AppLocalizations.of(context)!.forgotPassword}?',
                             style: regularTextStyle(
-                                fontSize: 12,
-                                textDecoration: TextDecoration.underline),
+                                fontSize: 15, color: AppColors.c636C73),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const VerticalSpace(height: 24),
+                  const VerticalSpace(height: 30),
                   AppButton(
-                    margin: EdgeInsets.symmetric(horizontal: 20.w),
-                    title: AppLocalizations.of(context)!.signIn,
+                    radius: 10,
+                    backgroundColor: AppColors.c5CE1E6,
+                    title: AppLocalizations.of(context)!.login,
                     showLoader: loading,
                     onTap: () async {
                       // var appLoc = AppLocalizations.of(context)!;
@@ -202,44 +198,81 @@ class _LoginPageState extends State<LoginPage> {
                       }
                     },
                   ),
-                  const VerticalSpace(height: 24),
+                  const VerticalSpace(height: 30),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Expanded(
-                        child: Divider(
-                          color: AppColors.cD6D6D6,
-                          thickness: 1,
-                        ),
+                      Text(
+                        AppLocalizations.of(context)!.dontHaveAnAccount,
+                        style: regularTextStyle(fontSize: 15),
                       ),
-                      Container(
-                        height: 27.h,
-                        padding: EdgeInsets.symmetric(horizontal: 6.w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(22),
-                          border: Border.all(color: AppColors.cD6D6D6),
-                        ),
-                        child: Text(
-                          AppLocalizations.of(context)!.orSignUpWith,
-                          style: mediumTextStyle(fontSize: 12),
-                        ),
-                      ),
-                      const Expanded(
-                        child: Divider(
-                          color: AppColors.cD6D6D6,
-                          thickness: 1,
+                      Clickable(
+                        onTap: () => pushToName(RoutesNames.register),
+                        child: RichText(
+                          text: TextSpan(
+                            style: regularTextStyle(fontSize: 15),
+                            children: [
+                              TextSpan(
+                                  text:
+                                      ' ${AppLocalizations.of(context)!.signUp} ',
+                                  style: regularTextStyle(
+                                    color: AppColors.c5CE1E6,
+                                  )),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  const VerticalSpace(height: 24),
+                  const VerticalSpace(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SignUpCircularButton(
-                          assetPath: AssetIcons.google, onTap: () {}),
-                      const HorizontalSpace(width: 8),
-                      SignUpCircularButton(
-                          assetPath: AssetIcons.facebook, onTap: () {}),
+                      Expanded(
+                        child: Container(
+                          height: 111,
+                          width: 192,
+                          decoration: BoxDecoration(
+                              color: AppColors.cF8F8F8,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SignUpCircularButton(
+                                  assetPath: AssetIcons.google, onTap: () {}),
+                              const VerticalSpace(height: 10),
+                              Text(
+                                AppLocalizations.of(context)!
+                                    .continueWithGoogle,
+                                style: regularTextStyle(fontSize: 13),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const HorizontalSpace(width: 20),
+                      Expanded(
+                        child: Container(
+                          height: 111,
+                          width: 192,
+                          decoration: BoxDecoration(
+                              color: AppColors.cF8F8F8,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SignUpCircularButton(
+                                  assetPath: AssetIcons.facebook, onTap: () {}),
+                              const VerticalSpace(height: 10),
+                              Text(
+                                AppLocalizations.of(context)!
+                                    .continueWithFacebook,
+                                style: regularTextStyle(fontSize: 13),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],

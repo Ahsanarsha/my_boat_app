@@ -3,18 +3,15 @@
   "letsGetStarted": "Let’s get started!",
   "emailUsername": "Email/Username",
   "enterEmailOrUsername": "Enter email or username",
-  "confirmPassword": "Confirm Password",
-  "enterConfirmPassword": "Enter Confirm Password",
+
   "signIn": "Sign In",
-  "signUp": "Sign up",
-  "forgotPassword": "Forgot Password",
+ 
   "orSignUpWith": "Or Sign Up With",
   "referralCode": "Referral code",
   "enterReferralCode": "Enter Referral code",
   "username": "Username",
-  "enterUsername": "Enter username",
   "email": "Email",
-  "enterEmailAddress": "Enter Email Address",
+  "enterEmailHere": "Enter Email Here",
   "iAgreeToThe": "I agree to the",
   "termsConditions": "Terms & Conditions",
   "getStarted": "Get Started",
@@ -30,9 +27,7 @@
   "enterEmail": "Enter Email",
   "enterCode": "Enter code",
   "weHaveSentYou6DigitCode": "We have sent you a 6 Digit code in your email.",
-  "next": "Next",
-  "newPassword": "New Password",
-  "enterNewPassword": "Enter New Password",
+ 
   "save": "Save",
   "passwordHasBeenChangeedSuccessfully": "Password has been Changeed successfully",
   "loremIpsumSsSimplyDummyText": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been text.",
@@ -245,12 +240,11 @@
   "signInWithEmail": "Sign in with Email",
   "signinWithGoogle": "Sign in with Google",
   "signInWithApple": "Sign in with Apple",
-  "dontHaveAnAccount": "Don’t have an account?",
+ 
   "loginIntoYourAccount": "Log in to your account",
   "emailAddress": "Email Address",
   "password": "Password",
   "enterPassword": "Enter Password",
-  "login": "Login",
   "sendCode": "Send Code",
   "forgotYourPassword": "Forgot Your Password?",
   "dontPanicLetGetYou": "Don’t panic. Let's get you back in!",
@@ -269,7 +263,6 @@
   "logInToYourAccount": "Log in to your account",
   "createNewPassword": "Create New Password",
   "confirmPasswordNotMatch": "The two passwords do not match, please try again.",
-  "otp": "OTP",
   "mustBe6CharactersLong": "must be 6 characters long",
   "passwordMustIncludeAt": "Password must include at least one special character, one capital letter and one number",
   "firstName": "First Name",
@@ -287,8 +280,6 @@
   "locationSetup": "Location Setup",
   "proceedToProfileCreation": "Proceed To Profile Creation",
   "chooseYourProfile": "Choose Your Profile",
-  "fullName": "Full Name",
-  "enterFullName": "Enter full name",
   "editProfilePic": "Edit Profile Picture",
   "takePhoto": "Take Photo",
   "choosePhoto": "Choose Photo",
@@ -306,7 +297,6 @@
   "enterStreetAddress": "Enter street address",
   "city": "City",
   "province": "Province",
-  "country": "Country",
   "updateProfile": "Update Profile",
   "kindlyUploadYourPic": "Kindly upload your picture",
   "bookings": "Bookings",
@@ -428,5 +418,50 @@
   "requestingService": "Requesting Service",
   "quoteDetails": "Quote Details",
   "preferredService": "Preferred Service?",
-  "searchAService": "Search A Service"
+  "searchAService": "Search A Service",
+
+
+
+
+
+
+
+
+
+
+  "welcomeBack": "Welcome Back",
+  "welcomeBackSelect": "Welcome back! Select method to log in:",
+  "rememberMe": "Remenber Me",
+  "login": "Login",
+  "dontHaveAnAccount": "Don’t have an account?",
+  "continueWithGoogle": "Continue with Google",  
+  "continueWithFacebook": "Continue with Facebook",
+  "signUp": "Sign up",
+  "fullName": "Full Name",
+  "enterFullName": "Enter Full Name Here",
+  "phone": "Phone",
+  "enterPhone": "Enter Phone Here",
+  "country": "Country",
+  "enterPasswordHere": "Enter Password Here",
+  "confirmPassword": "Confirm Password",
+  "selectCounterHere": "Select Country Here",
+  "forgotPassword": "Forgot Password",
+  "otp": "OTP Code",
+  "aCodeWillBe": "A Code to reset your password will be sent to your email",
+  "enterOtpCode": "Enter OTP Code",
+  "enterOtpHere": "Enter OTP Here",
+  "enterANewPassword": "Enter a New Password",
+  "setNewPassword": "Set New Password",
+
+
+  "next": "Next",
+  "aCodeToResetYour": "A Code to reset your password will be sent to your email"
+
+
+
+
+
+
+
+  
 }

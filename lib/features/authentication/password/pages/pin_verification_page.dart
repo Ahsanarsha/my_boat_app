@@ -1,12 +1,16 @@
+import 'package:my_boat/routes/routes_names.dart';
 import 'package:my_boat/themes/colors.dart';
 import 'package:my_boat/themes/styles.dart';
 import 'package:my_boat/utils/exports.dart';
 import 'package:my_boat/utils/extensions.dart';
+import 'package:my_boat/utils/helper.dart';
 import 'package:my_boat/utils/params.dart';
 import 'package:my_boat/utils/scalling.dart';
 import 'package:my_boat/widgets/app_bar.dart';
 import 'package:my_boat/widgets/button.dart';
 import 'package:my_boat/widgets/hide_keyboard.dart';
+import 'package:my_boat/widgets/input_field.dart';
+import 'package:my_boat/widgets/logo.dart';
 import 'package:my_boat/widgets/pin_input_field.dart';
 import 'package:my_boat/widgets/vertical_space.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +25,8 @@ class PinVerificationPage extends StatefulWidget {
 
 class _PinVerificationPageState extends State<PinVerificationPage> {
   late final GlobalKey<FormState> otpFormKey;
+  late final FocusNode otpFocus;
+
   late final TextEditingController otpController;
 
   bool loading = false;
@@ -29,6 +35,7 @@ class _PinVerificationPageState extends State<PinVerificationPage> {
   void initState() {
     otpFormKey = GlobalKey<FormState>();
     otpController = TextEditingController();
+    otpFocus = FocusNode();
 
     super.initState();
   }
@@ -36,6 +43,7 @@ class _PinVerificationPageState extends State<PinVerificationPage> {
   @override
   void dispose() {
     otpController.dispose();
+    otpFocus.dispose();
     super.dispose();
   }
 
@@ -43,83 +51,120 @@ class _PinVerificationPageState extends State<PinVerificationPage> {
   Widget build(BuildContext context) {
     return HideKeyboardOnOutsideTap(
       child: Scaffold(
-        appBar:
-            CustomAppBar(title: AppLocalizations.of(context)!.forgotPassword),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const VerticalSpace(height: 24),
+                  const VerticalSpace(height: 32),
+                  const LogoClass(),
+                  const VerticalSpace(height: 37),
                   Text(
-                    AppLocalizations.of(context)!.enterCode,
-                    style: semiBoldTextStyle(fontSize: 20),
+                    AppLocalizations.of(context)!.otp,
+                    style: boldTextStyle(fontSize: 20),
                   ),
                   const VerticalSpace(height: 8),
                   Text(
-                    AppLocalizations.of(context)!.weHaveSentYou6DigitCode,
+                    AppLocalizations.of(context)!.aCodeWillBe,
                     style: mediumTextStyle(
                       color: AppColors.c181B23,
                       fontSize: 12,
                     ),
                   ),
-                  const VerticalSpace(height: 24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Form(
-                        key: otpFormKey,
-                        child: PinInputField(
-                          length: 6,
-                          controller: otpController,
-                          onSuccess: (value) async {
-                            if (isFormValidate()) {}
-                          },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return AppLocalizations.of(context)!
-                                  .required(AppLocalizations.of(context)!.otp);
-                            } else if (value.length < 6) {
-                              return '${AppLocalizations.of(context)!.otp} ${AppLocalizations.of(context)!.mustBe6CharactersLong}';
-                            }
-                            return null;
-                          },
+                  const VerticalSpace(height: 20),
+
+                  ///Email Field
+                  ...[
+                    const VerticalSpace(height: 20),
+                    Row(
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.enterOtpCode,
+                          style: regularTextStyle(fontSize: 14),
                         ),
+                      ],
+                    ),
+                    const VerticalSpace(height: 4),
+                    Form(
+                      key: otpFormKey,
+                      child: AppInputField(
+                        controller: otpController,
+                        focusNode: otpFocus,
+                        name: AppLocalizations.of(context)!.enterOtpCode,
+                        hint: AppLocalizations.of(context)!.enterOtpHere,
+                        textInputType: TextInputType.number,
+                        textInputAction: TextInputAction.done,
+                        onChanged: (value) {
+                          otpFormKey.currentState!.validate();
+                        },
+                        onFieldSubmitted: (value) {
+                          otpFormKey.currentState!.validate();
+                        },
                       ),
-                    ],
+                    ),
+                  ],
+                  const VerticalSpace(height: 30),
+
+                  AppButton(
+                    radius: 10,
+                    backgroundColor: AppColors.c5CE1E6,
+                    title: AppLocalizations.of(context)!.next,
+                    showLoader: loading,
+                    onTap: () async {
+                      if (isFormValidate()) {
+                        loading = true;
+                        setState(() {});
+                        await Future.delayed(const Duration(milliseconds: 500));
+                        loading = false;
+                        setState(() {});
+                        'Verification Successful'.showToast();
+                        if (widget.params.onSuccess != null) {
+                          widget.params.onSuccess!();
+                        }
+                      }
+                    },
                   ),
+                  const VerticalSpace(height: 20),
+
+                  AppButton(
+                    radius: 10,
+                    backgroundColor: AppColors.cE8E8E8,
+                    title: AppLocalizations.of(context)!.login,
+                    textStyle: regularTextStyle(color: AppColors.black),
+                    onTap: () async {
+                      pushToAndReplaceName(RoutesNames.login);
+                    },
+                  ),
+
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     Form(
+                  //       key: otpFormKey,
+                  //       child: PinInputField(
+                  //         length: 6,
+                  //         controller: otpController,
+                  //         onSuccess: (value) async {
+                  //           if (isFormValidate()) {}
+                  //         },
+                  //         validator: (value) {
+                  //           if (value!.isEmpty) {
+                  //             return AppLocalizations.of(context)!
+                  //                 .required(AppLocalizations.of(context)!.otp);
+                  //           } else if (value.length < 6) {
+                  //             return '${AppLocalizations.of(context)!.otp} ${AppLocalizations.of(context)!.mustBe6CharactersLong}';
+                  //           }
+                  //           return null;
+                  //         },
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             ),
-          ),
-        ),
-        bottomNavigationBar: SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppButton(
-                margin: EdgeInsets.symmetric(horizontal: 20.w),
-                title: AppLocalizations.of(context)!.next,
-                showLoader: loading,
-                onTap: () async {
-                  if (isFormValidate()) {
-                    loading = true;
-                    setState(() {});
-                    await Future.delayed(const Duration(milliseconds: 500));
-                    loading = false;
-                    setState(() {});
-                    'Verification Successful'.showToast();
-                    if (widget.params.onSuccess != null) {
-                      widget.params.onSuccess!();
-                    }
-                  }
-                },
-              ),
-              if (!(MediaQuery.of(context).padding.bottom > 0))
-                SizedBox(height: 20.h),
-            ],
           ),
         ),
       ),
