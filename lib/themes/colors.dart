@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   static const white = Color(0xffFFFFFF);
   static const black = Color(0xff000000);
-  static const primary = Color(0xff417CCC);
+  static const primary = Color(0xff5CE1E6);
   static const lightPrimary = Color(0xffE9F5EE);
   static const error = Color(0xffFD5B4F);
 
   // Boat App
 
   static const cA3A3A3 = Color(0xffA3A3A3);
-  static const c5CE1E6 = Color(0xff5CE1E6);
   static const cF8F8F8 = Color(0xffF8F8F8);
   static const cE8E8E8 = Color(0xffE8E8E8);
 

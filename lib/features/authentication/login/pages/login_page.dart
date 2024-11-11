@@ -71,8 +71,8 @@ class _LoginPageState extends State<LoginPage> {
                   const LogoClass(),
                   const VerticalSpace(height: 65),
                   Text(
-                    AppLocalizations.of(context)!.forgotPassword,
-                    style: boldTextStyle(fontSize: 20),
+                    AppLocalizations.of(context)!.welcomeBack,
+                    style: boldTextStyle(fontSize: 22),
                   ),
                   const VerticalSpace(height: 5),
 
@@ -181,8 +181,9 @@ class _LoginPageState extends State<LoginPage> {
                   AppButton(
                     isUpperCase: false,
                     radius: 10,
-                    backgroundColor: AppColors.c5CE1E6,
+                    backgroundColor: AppColors.primary,
                     title: AppLocalizations.of(context)!.login,
+                    loaderColor: AppColors.white,
                     showLoader: loading,
                     onTap: () async {
                       // var appLoc = AppLocalizations.of(context)!;
@@ -216,7 +217,7 @@ class _LoginPageState extends State<LoginPage> {
                                   text:
                                       ' ${AppLocalizations.of(context)!.signUp} ',
                                   style: regularTextStyle(
-                                    color: AppColors.c5CE1E6,
+                                    color: AppColors.primary,
                                   )),
                             ],
                           ),

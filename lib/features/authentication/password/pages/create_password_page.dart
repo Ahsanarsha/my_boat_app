@@ -69,7 +69,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                   const VerticalSpace(height: 60),
                   Text(
                     AppLocalizations.of(context)!.setNewPassword,
-                    style: boldTextStyle(fontSize: 20),
+                    style: boldTextStyle(fontSize: 22),
                   ),
                   const VerticalSpace(height: 8),
                   Text(
@@ -207,7 +207,8 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                   AppButton(
                     isUpperCase: false,
                     radius: 10,
-                    backgroundColor: AppColors.c5CE1E6,
+                    loaderColor: AppColors.white,
+                    backgroundColor: AppColors.primary,
                     title: AppLocalizations.of(context)!.setNewPassword,
                     showLoader: loading,
                     onTap: () async {

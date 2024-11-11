@@ -76,13 +76,13 @@ flutter:
   fonts:
     - family: sfui
       fonts:
-        - asset: assets/fonts/inter/light.otf
+        - asset: assets/fonts/sfui/light.otf
           weight: 300
-        - asset: assets/fonts/inter/regular.otf
+        - asset: assets/fonts/sfui/regular.ttf
           weight: 400
-        - asset: assets/fonts/inter/medium.otf
+        - asset: assets/fonts/sfui/medium.otf
           weight: 500
-        - asset: assets/fonts/inter/semi-bold.otf
+        - asset: assets/fonts/sfui/semi-bold.otf
           weight: 600
-        - asset: assets/fonts/inter/bold.otf
+        - asset: assets/fonts/sfui/bold.otf
           weight: 700

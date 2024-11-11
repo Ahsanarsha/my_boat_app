@@ -60,7 +60,7 @@ class _PinVerificationPageState extends State<PinVerificationPage> {
                   const VerticalSpace(height: 37),
                   Text(
                     AppLocalizations.of(context)!.otp,
-                    style: boldTextStyle(fontSize: 20),
+                    style: boldTextStyle(fontSize: 22),
                   ),
                   const VerticalSpace(height: 8),
                   Text(
@@ -107,9 +107,10 @@ class _PinVerificationPageState extends State<PinVerificationPage> {
                   AppButton(
                     isUpperCase: false,
                     radius: 10,
-                    backgroundColor: AppColors.c5CE1E6,
+                    backgroundColor: AppColors.primary,
                     title: AppLocalizations.of(context)!.next,
                     showLoader: loading,
+                    loaderColor: AppColors.white,
                     onTap: () async {
                       if (isFormValidate()) {
                         loading = true;

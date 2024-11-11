@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_boat/features/authentication/login/pages/login_method_selection_page.dart';
 import 'package:my_boat/features/authentication/login/pages/login_page.dart';
 import 'package:my_boat/features/authentication/password/pages/create_password_page.dart';
 import 'package:my_boat/features/authentication/password/pages/forgot_password_page.dart';
@@ -19,9 +18,6 @@ abstract class RouteConfiguration {
     switch (settings.name) {
       case RoutesNames.register:
         route = const RegisterPage();
-        break;
-      case RoutesNames.loginMethodSelection:
-        route = const LoginMethodSelectionPage();
         break;
       case RoutesNames.login:
         route = const LoginPage();

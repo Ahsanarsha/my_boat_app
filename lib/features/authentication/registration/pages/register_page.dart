@@ -371,7 +371,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   AppButton(
                     isUpperCase: false,
                     radius: 10,
-                    backgroundColor: AppColors.c5CE1E6,
+                    backgroundColor: AppColors.primary,
 
                     title: AppLocalizations.of(context)!.signUp,
                     // enable: isTosAccepted,
@@ -405,7 +405,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   text:
                                       ' ${AppLocalizations.of(context)!.signIn} ',
                                   style: regularTextStyle(
-                                    color: AppColors.c5CE1E6,
+                                    color: AppColors.primary,
                                   )),
                             ],
                           ),

@@ -15,7 +15,7 @@ class PrimaryCheckBox extends StatelessWidget {
   const PrimaryCheckBox({
     super.key,
     this.label,
-    this.activeColor = AppColors.c5CE1E6,
+    this.activeColor = AppColors.primary,
     this.inActiveColor = AppColors.c757575,
     this.onTap,
     this.value = false,

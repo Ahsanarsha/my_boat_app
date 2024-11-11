@@ -57,7 +57,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   const VerticalSpace(height: 60),
                   Text(
                     AppLocalizations.of(context)!.forgotPassword,
-                    style: boldTextStyle(fontSize: 20),
+                    style: boldTextStyle(fontSize: 22),
                   ),
                   const VerticalSpace(height: 5),
 
@@ -101,7 +101,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   AppButton(
                     isUpperCase: false,
                     radius: 10,
-                    backgroundColor: AppColors.c5CE1E6,
+                    backgroundColor: AppColors.primary,
+                    loaderColor: AppColors.white,
                     title: AppLocalizations.of(context)!.next,
                     textStyle: regularTextStyle(color: AppColors.white),
                     showLoader: loading,
