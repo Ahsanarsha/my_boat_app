@@ -83,100 +83,104 @@ class _LoginPageState extends State<LoginPage> {
 
                   ///Email Field
 
-                  const VerticalSpace(height: 40),
-                  Row(
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.email,
-                        style: regularTextStyle(fontSize: 14),
-                      ),
-                    ],
-                  ),
-                  const VerticalSpace(height: 4),
-                  Form(
-                    key: emailFormKey,
-                    child: AppInputField(
-                      controller: emailController,
-                      focusNode: emailFocus,
-                      name: AppLocalizations.of(context)!.email,
-                      hint: AppLocalizations.of(context)!.enterEmailHere,
-                      textInputType: TextInputType.emailAddress,
-                      onChanged: (value) {
-                        emailFormKey.currentState!.validate();
-                      },
-                      onFieldSubmitted: (value) {
-                        emailFormKey.currentState!.validate();
-                      },
+                  ...[
+                    const VerticalSpace(height: 40),
+                    Row(
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.email,
+                          style: regularTextStyle(fontSize: 14),
+                        ),
+                      ],
                     ),
-                  ),
+                    const VerticalSpace(height: 4),
+                    Form(
+                      key: emailFormKey,
+                      child: AppInputField(
+                        controller: emailController,
+                        focusNode: emailFocus,
+                        name: AppLocalizations.of(context)!.email,
+                        hint: AppLocalizations.of(context)!.enterEmailHere,
+                        textInputType: TextInputType.emailAddress,
+                        onChanged: (value) {
+                          emailFormKey.currentState!.validate();
+                        },
+                        onFieldSubmitted: (value) {
+                          emailFormKey.currentState!.validate();
+                        },
+                      ),
+                    ),
+                  ],
 
                   ///Password Field
-
-                  const VerticalSpace(height: 30),
-                  Row(
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.password,
-                        style: regularTextStyle(fontSize: 14),
-                      ),
-                    ],
-                  ),
-                  const VerticalSpace(height: 4),
-                  Form(
-                    key: passwordFormKey,
-                    child: AppInputField(
-                      controller: passwordController,
-                      focusNode: passwordFocus,
-                      isLoginPassword: true,
-                      name: AppLocalizations.of(context)!.password,
-                      hint: AppLocalizations.of(context)!.enterPasswordHere,
-                      textInputType: TextInputType.visiblePassword,
-                      textInputAction: TextInputAction.done,
-                      onChanged: (value) {
-                        passwordFormKey.currentState!.validate();
-                      },
-                      onFieldSubmitted: (value) {
-                        passwordFormKey.currentState!.validate();
-                      },
-                      validator: (value) {
-                        if (value.isNotEmpty && value.length < 8) {
-                          return AppLocalizations.of(context)!
-                              .passwordShouldbeMinimum;
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-
-                  const VerticalSpace(height: 6),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      PrimaryCheckBox(
-                        value: isTosAccepted,
-                        onTap: () => {
-                          setState(() {
-                            isTosAccepted = !isTosAccepted;
-                          })
-                        },
-                        labelWidget: Text(
-                          AppLocalizations.of(context)!.rememberMe,
-                          style: regularTextStyle(
-                              fontSize: 15, color: AppColors.c636C73),
+                  ...[
+                    const VerticalSpace(height: 30),
+                    Row(
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.password,
+                          style: regularTextStyle(fontSize: 14),
                         ),
+                      ],
+                    ),
+                    const VerticalSpace(height: 4),
+                    Form(
+                      key: passwordFormKey,
+                      child: AppInputField(
+                        controller: passwordController,
+                        focusNode: passwordFocus,
+                        isLoginPassword: true,
+                        name: AppLocalizations.of(context)!.password,
+                        hint: AppLocalizations.of(context)!.enterPasswordHere,
+                        textInputType: TextInputType.visiblePassword,
+                        textInputAction: TextInputAction.done,
+                        onChanged: (value) {
+                          passwordFormKey.currentState!.validate();
+                        },
+                        onFieldSubmitted: (value) {
+                          passwordFormKey.currentState!.validate();
+                        },
+                        validator: (value) {
+                          if (value.isNotEmpty && value.length < 8) {
+                            return AppLocalizations.of(context)!
+                                .passwordShouldbeMinimum;
+                          }
+                          return null;
+                        },
                       ),
-                      Clickable(
-                        onTap: () => pushToName(RoutesNames.forgotPassword),
-                        child: SizedBox(
-                          child: Text(
-                            '${AppLocalizations.of(context)!.forgotPassword}?',
+                    ),
+                  ],
+                  ...[
+                    const VerticalSpace(height: 6),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        PrimaryCheckBox(
+                          value: isTosAccepted,
+                          onTap: () => {
+                            setState(() {
+                              isTosAccepted = !isTosAccepted;
+                            })
+                          },
+                          labelWidget: Text(
+                            AppLocalizations.of(context)!.rememberMe,
                             style: regularTextStyle(
                                 fontSize: 15, color: AppColors.c636C73),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                        Clickable(
+                          onTap: () => pushToName(RoutesNames.forgotPassword),
+                          child: SizedBox(
+                            child: Text(
+                              '${AppLocalizations.of(context)!.forgotPassword}?',
+                              style: regularTextStyle(
+                                  fontSize: 15, color: AppColors.c636C73),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                   const VerticalSpace(height: 30),
                   AppButton(
                     isUpperCase: false,

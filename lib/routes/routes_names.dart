@@ -7,6 +7,10 @@ abstract class RoutesNames {
   static const onBoarding2 = '/onboarding-2';
   static const onBoarding3 = '/onboarding-3';
 
+  // Splash Sceren routes
+
+  static const splashScreen = '/splash-screen';
+
   // Registration routes
   static const registrationMethodSelection1 =
       '/registration-method-selection-1';

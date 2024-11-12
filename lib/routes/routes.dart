@@ -7,6 +7,7 @@ import 'package:my_boat/features/authentication/profile/pages/update_profile_ins
 import 'package:my_boat/features/authentication/profile/pages/update_profile_page.dart';
 import 'package:my_boat/features/authentication/registration/pages/register_page.dart';
 import 'package:my_boat/features/navbar/views/navbar_page.dart';
+import 'package:my_boat/features/splash_screen/splash_screen.dart';
 import 'package:my_boat/routes/routes_names.dart';
 import 'package:my_boat/utils/params.dart';
 
@@ -16,6 +17,8 @@ abstract class RouteConfiguration {
   static Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     Widget route;
     switch (settings.name) {
+      case RoutesNames.splashScreen:
+        route = const SplashScreen();
       case RoutesNames.register:
         route = const RegisterPage();
         break;

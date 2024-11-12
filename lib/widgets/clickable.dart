@@ -12,7 +12,10 @@ class Clickable extends StatelessWidget {
       highlightColor: Colors.transparent,
       onTap: () async {
         FocusManager.instance.primaryFocus?.unfocus();
-        onTap!();
+        // onTap!();
+        if (onTap != null) {
+          onTap!();
+        }
       },
       child: child,
     );

@@ -8,6 +8,8 @@ import 'package:my_boat/app/app.dart';
 late MaterialAppController materialAppController;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(
+      const Duration(seconds: 3)); // Small delay to avoid splash issues
   materialAppController = Get.put(MaterialAppController(), permanent: true);
   try {
     await materialAppController.initilizeMaterialApp();

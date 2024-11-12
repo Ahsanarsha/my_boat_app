@@ -46,6 +46,7 @@ dependencies:
   badges: ^3.1.2
   flutter_rating_bar: ^4.0.1
   win32: ^4.1.0
+  video_player: ^2.5.5  
 
 dependency_overrides:
   intl: ^0.19.0
@@ -59,8 +60,8 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1 #flutter pub pub run flutter_launcher_icons:main
 
 flutter_icons:
-  image_path_android: "assets/images/logo.png"
-  image_path_ios: "assets/images/logo.png"
+  image_path_android: "assets/images/logo_image.png"
+  image_path_ios: "assets/images/logo_image.png"
   android: true
   ios: true
   remove_alpha_ios: true
