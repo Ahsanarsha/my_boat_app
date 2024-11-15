@@ -56,7 +56,6 @@
   "popular" : "Popular",
   "send" : "Send",
   "reply" : "Reply",
-  "profile" : "Profile",
   "dark" : "Dark",
   "light" : "Light",
   "currentPlan" : "Current plan",
@@ -298,7 +297,6 @@
   "updateProfile": "Update Profile",
   "kindlyUploadYourPic": "Kindly upload your picture",
   "bookings": "Bookings",
-  "messages": "Messages",
   "hiRequester": "Hi {title},",
   "@hiRequester": {
     "placeholders": {
@@ -452,6 +450,10 @@
   "setNewPassword": "Set New Password",
   "doYouHaveAn": "Do you have an account?",
   "signIn": "Sign In",
+  "searchNav": "Search",
+  "messages": "Messages",
+  "profile" : "Profile",
+
 
   "next": "Next",
   "aCodeToResetYour": "A Code to reset your password will be sent to your email"

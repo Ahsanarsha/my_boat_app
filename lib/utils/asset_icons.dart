@@ -11,7 +11,7 @@ abstract class AssetIcons {
   static const community = 'assets/images/community.png';
   static const referral = 'assets/images/referral.png';
   static const home = 'assets/images/home.png';
-  static const notifications = 'assets/images/notifications.png';
+  static const notifications = 'assets/images/notification.png';
   static const secure = 'assets/images/secure.png';
   static const unsecure = 'assets/images/unsecure.png';
   static const logoTitle = 'assets/images/logo-title.png';
@@ -32,4 +32,7 @@ abstract class AssetIcons {
   static const gallary = 'assets/images/gallary.png';
   static const userPlcaeholder = 'assets/images/user-placeholder.png';
   static const cameraColor = 'assets/images/camera-color.png';
+  static const message = 'assets/images/message.png';
+  static const profile = 'assets/images/profile.png';
+  static const container = 'assets/images/container.png';
 }

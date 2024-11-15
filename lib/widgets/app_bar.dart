@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onTapBack,
     this.title,
     this.actions,
-    this.color = Colors.white,
+    this.color = AppColors.primary,
     this.titleWidget,
     this.leadingIcon = AssetIcons.backButton,
     this.showPreferenceBar = true,

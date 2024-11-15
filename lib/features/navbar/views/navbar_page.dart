@@ -1,5 +1,6 @@
 import 'package:my_boat/features/navbar/controllers/navbar_controller.dart';
 import 'package:my_boat/features/navbar/models/navbar_model.dart';
+import 'package:my_boat/features/navbar/views/home_screen/home_screen.dart';
 import 'package:my_boat/features/navbar/widgets/navbar_widget.dart';
 import 'package:my_boat/themes/colors.dart';
 import 'package:my_boat/utils/asset_icons.dart';
@@ -39,21 +40,21 @@ class _NavbarPageState extends State<NavbarPage> {
       NavbarModel(
         assetIconPath: AssetIcons.home,
         text: AppLocalizations.of(context)!.home,
-        view: const Text('Home Screen'),
+        view: const HomeScreen(),
       ),
       NavbarModel(
-        assetIconPath: AssetIcons.community,
-        text: AppLocalizations.of(context)!.community,
+        assetIconPath: AssetIcons.search,
+        text: AppLocalizations.of(context)!.searchNav,
         view: const Text('Search Screen'),
       ),
       NavbarModel(
-        assetIconPath: AssetIcons.referral,
-        text: AppLocalizations.of(context)!.referral,
+        assetIconPath: AssetIcons.message,
+        text: AppLocalizations.of(context)!.messages,
         view: const Text('Messages Screen'),
       ),
       NavbarModel(
-        assetIconPath: AssetIcons.notifications,
-        text: AppLocalizations.of(context)!.notifications,
+        assetIconPath: AssetIcons.profile,
+        text: AppLocalizations.of(context)!.profile,
         view: const Text('Profile Screen'),
       ),
     ];
