@@ -35,4 +35,6 @@ abstract class AssetIcons {
   static const message = 'assets/images/message.png';
   static const profile = 'assets/images/profile.png';
   static const container = 'assets/images/container.png';
+  static const homeLogo = 'assets/images/home_logo.png';
+  static const boatImage = 'assets/images/boat_image.png';
 }

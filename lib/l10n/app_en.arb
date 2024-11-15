@@ -166,7 +166,6 @@
   "referralProgramParticipation": "Referral program Participation",
   "detailedFertilityProgram": "Detailed fertility program data",
   "goPro": "Go Pro",
-  "search": "Search...",
   "askCommunity": "Ask community!",
   "doYouHaveAnyQuestionsYouMay": "Do you have any questions? You may ask them here for the community to answer",
   "topCompanies": "Top companies",
@@ -453,6 +452,11 @@
   "searchNav": "Search",
   "messages": "Messages",
   "profile" : "Profile",
+  "search": "Search",
+  "topProducts":"Top Products",
+  "helloJohnSmith":"Hello, John Smith 👋",
+  "haveANiceDay":"Have A Nice Day!",
+
 
 
   "next": "Next",
