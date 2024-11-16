@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_boat/routes/routes_names.dart';
 import 'package:my_boat/themes/colors.dart';
+import 'package:my_boat/themes/styles.dart';
 import 'package:my_boat/utils/asset_icons.dart';
 import 'package:my_boat/utils/exports.dart';
 import 'package:my_boat/utils/helper.dart';
@@ -205,7 +206,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 const HorizontalSpace(width: 10),
                                 Text(
                                   categories[index],
-                                  style: TextStyle(
+                                  style: regularTextStyle(
                                     color: selectedCategoryIndex == index
                                         ? Colors.white
                                         : Colors.black,

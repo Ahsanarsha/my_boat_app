@@ -270,7 +270,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           backgroundColor:
                               withSkipper ? AppColors.primary : AppColors.white,
                           title: AppLocalizations.of(context)!.withSkipper,
-                          textStyle: TextStyle(
+                          textStyle: regularTextStyle(
                             color:
                                 withSkipper ? Colors.white : AppColors.cA3A3A3,
                           ),
@@ -294,7 +294,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               ? AppColors.primary
                               : AppColors.white,
                           title: AppLocalizations.of(context)!.withoutSkipper,
-                          textStyle: TextStyle(
+                          textStyle: regularTextStyle(
                             color:
                                 !withSkipper ? Colors.white : AppColors.cA3A3A3,
                           ),
@@ -360,7 +360,7 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Center(
             child: Text(
               text,
-              style: TextStyle(
+              style: semiBoldTextStyle(
                 color:
                     selectedToggleIndex == index ? Colors.white : Colors.black,
                 fontWeight: FontWeight.bold,

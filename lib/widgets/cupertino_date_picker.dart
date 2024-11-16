@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_boat/themes/colors.dart';
 import 'package:my_boat/themes/font_weights.dart';
+import 'package:my_boat/themes/styles.dart';
 import 'package:my_boat/utils/exports.dart';
 import 'package:my_boat/utils/scalling.dart';
 import 'package:my_boat/widgets/button.dart';
@@ -76,7 +77,7 @@ class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
                       SizedBox(height: 24.h),
                       Text(
                         widget.title,
-                        style: TextStyle(
+                        style: regularTextStyle(
                           fontSize: 16.w,
                           fontWeight: AppFontWeights.semiBold,
                           color: AppColors.c141316,
