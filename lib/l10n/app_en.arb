@@ -456,6 +456,16 @@
   "topProducts":"Top Products",
   "helloJohnSmith":"Hello, John Smith 👋",
   "haveANiceDay":"Have A Nice Day!",
+   "whereTo": "Where to?",
+   "placeOfDeparture": "Place of departure",
+   "unitedState": "United State.",
+   "startingDate":"Starting Date",
+   "dDMMYYYY":"DD/MM/YYYY",
+   "endingDate": "Ending Date",
+   "withSkipper":"With Skipper", 
+   "withoutSkipper":"Without Skipper",  
+   "boatType":"Boat Type",
+   "motorboat":"Motorboat",  
 
 
 

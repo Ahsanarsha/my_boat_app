@@ -1,6 +1,6 @@
 abstract class RoutesNames {
   // Splash routes
-  static const splash = '/';
+  // static const splash = '/';
 
   // OnBoardings routes
   static const onBoarding1 = '/onboarding-1';
@@ -8,8 +8,7 @@ abstract class RoutesNames {
   static const onBoarding3 = '/onboarding-3';
 
   // Splash Sceren routes
-
-  static const splashScreen = '/splash-screen';
+  static const splashScreen = '/';
 
   // Registration routes
   static const registrationMethodSelection1 =
@@ -39,4 +38,7 @@ abstract class RoutesNames {
 
 //Profile routes
   static const profilePage = '/profile_page';
+
+  // Search Screen
+  static const searchScreen = '/search_screen';
 }

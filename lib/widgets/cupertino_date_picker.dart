@@ -87,8 +87,8 @@ class _CustomCupertinoDatePickerState extends State<CustomCupertinoDatePicker> {
                         child: CupertinoDatePicker(
                           minimumDate: DateTime(1899, DateTime.now().month,
                               DateTime.now().day - 1),
-                          maximumDate: DateTime(DateTime.now().year,
-                              DateTime.now().month, DateTime.now().day - 1),
+                          maximumDate: DateTime(2050, DateTime.now().month,
+                              DateTime.now().day - 1), // Updated to allow today
                           initialDateTime: selectedDateTime,
                           mode: CupertinoDatePickerMode.date,
                           onDateTimeChanged: (time) {

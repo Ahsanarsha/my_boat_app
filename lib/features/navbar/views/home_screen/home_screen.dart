@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_boat/routes/routes_names.dart';
 import 'package:my_boat/themes/colors.dart';
 import 'package:my_boat/utils/asset_icons.dart';
 import 'package:my_boat/utils/exports.dart';
+import 'package:my_boat/utils/helper.dart';
+import 'package:my_boat/widgets/clickable.dart';
 import 'package:my_boat/widgets/hide_keyboard.dart';
 import 'package:my_boat/widgets/horizontal_space.dart';
 import 'package:my_boat/widgets/input_field.dart';
@@ -122,12 +125,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   left: 16,
                   right: 16,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: const [
+                    decoration: const BoxDecoration(
+                      boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
                           blurRadius: 10,
@@ -135,26 +134,30 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    child: Form(
-                      key: searchFormKey,
-                      child: AppInputField(
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          size: 25,
-                          color: AppColors.c555555,
+                    child: Clickable(
+                      onTap: () => pushToName(RoutesNames.searchScreen),
+                      child: Form(
+                        key: searchFormKey,
+                        child: AppInputField(
+                          enabled: false,
+                          prefixIcon: const Icon(
+                            Icons.search,
+                            size: 25,
+                            color: AppColors.c555555,
+                          ),
+                          required: false,
+                          borderColor: AppColors.white,
+                          controller: searchController,
+                          focusNode: searchFocus,
+                          name: AppLocalizations.of(context)!.search,
+                          hint: AppLocalizations.of(context)!.search,
+                          onChanged: (value) {
+                            searchFormKey.currentState!.validate();
+                          },
+                          onFieldSubmitted: (value) {
+                            searchFormKey.currentState!.validate();
+                          },
                         ),
-                        required: false,
-                        borderColor: AppColors.white,
-                        controller: searchController,
-                        focusNode: searchFocus,
-                        name: AppLocalizations.of(context)!.search,
-                        hint: AppLocalizations.of(context)!.search,
-                        onChanged: (value) {
-                          searchFormKey.currentState!.validate();
-                        },
-                        onFieldSubmitted: (value) {
-                          searchFormKey.currentState!.validate();
-                        },
                       ),
                     ),
                   ),
